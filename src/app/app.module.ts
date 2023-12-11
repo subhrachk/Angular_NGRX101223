@@ -18,7 +18,7 @@ import { MaterialModule } from './material.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomCounterComponent } from './components/counter/customcounter/customcounter.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { blogReducer } from './shared/store/blogs/blog.reducer';
 
 @NgModule({
@@ -43,6 +43,8 @@ import { blogReducer } from './shared/store/blogs/blog.reducer';
     StoreModule.forRoot({Counter : counterReducer , Blogs : blogReducer}),
     StoreDevtoolsModule.instrument(),
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
