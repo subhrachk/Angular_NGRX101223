@@ -1,0 +1,14 @@
+<form class="customcounter">
+    <mat-form-field>
+        <mat-label>Custom Input</mat-label>
+        <input matInput name="_custominput" [(ngModel)]="_custominput" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Choose one</mat-label>
+        <mat-select name="_actiontype" [(ngModel)]="_actiontype">
+            <mat-option value="inc">Increase</mat-option>
+            <mat-option value="dec">Decrease</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="submitaction()">Action</button>
+</form>
