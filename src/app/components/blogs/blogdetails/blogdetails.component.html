@@ -1,5 +1,5 @@
 
-<button mat-raised-button color="primary" (click)="newBlog()">Add Blog</button>
+<button mat-raised-button color="primary" (click)="opennewblog()">Add Blog</button>
 
 <div *ngFor="let blog of (BlogList$ | async)">
     <mat-card>
@@ -7,7 +7,9 @@
             <h2>{{blog.title}}</h2>
         </mat-card-header>
         <mat-card-content>
-            <p>{{blog.description}}</p>
+            {{blog.description}}
+            <a mat-raised-button color="primary" style="float: right;" (click)="editBlog(blog.id)"><mat-icon>edit</mat-icon></a>
+            <a mat-raised-button color="warn" style="float: right;" (click)="deleteBlog(blog.id)"><mat-icon>delete</mat-icon></a>
         </mat-card-content>
     </mat-card>
 </div>

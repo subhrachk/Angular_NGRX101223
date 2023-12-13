@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomCounterComponent } from './components/counter/customcounter/customcounter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { blogReducer } from './shared/store/blogs/blog.reducer';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { BlogEffects } from './shared/store/blogs/blog.effects';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { blogReducer } from './shared/store/blogs/blog.reducer';
     StoreDevtoolsModule.instrument(),
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    EffectsModule.forRoot(BlogEffects)
   ],
   providers: [],
   bootstrap: [AppComponent]

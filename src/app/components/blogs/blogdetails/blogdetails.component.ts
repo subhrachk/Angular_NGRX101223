@@ -5,6 +5,7 @@ import { selectBlogs } from '../../../shared/store/blogs/blog.selector';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { NewblogComponent } from '../newblog/newblog.component';
+import { loadblogs } from '../../../shared/store/blogs/blog.action';
 
 @Component({
   selector: 'app-blogdetails',
@@ -17,15 +18,24 @@ export class BlogdetailsComponent {
 
   constructor(private store : Store<{BlogList : BlogType[]}>,
               private dialog : MatDialog) {
+    this.store.dispatch(loadblogs());
     this.BlogList$ = store.select(selectBlogs);
   }
 
-  newBlog() {
-    this.opennewblog();
+  deleteBlog(id : number) {
+    this.opennewedit(id,"Delete Blog",'delete');
   }
 
   opennewblog() {
-    this.dialog.open(NewblogComponent,{width : '40%'})
+    this.opennewedit(0,'Add Blog','add');
+  }
+
+  editBlog(id : number) {
+    this.opennewedit(id,"Edit Blog",'edit');
+  }
+
+  opennewedit(id : number, actiontitle : string, actiontype : string) {
+    this.dialog.open(NewblogComponent,{width : '40%', data : {id : id, actiontitle : actiontitle, actiontype : actiontype}});
   }
 
 }
